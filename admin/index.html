@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="es">
+<head>
+<base href="../">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin · Ledicia Castro</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0e0d0c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400..600&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #0e0d0c; --surface: #181614; --surface-2: #211e1b; --ink: #f2ede6; --muted: #a39b91; --line: rgba(242,237,230,.13); --accent: #ff4b2b; --ok: #5fd39a; --r: 8px; color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 "Hanken Grotesk", system-ui, sans-serif; }
+  a { color: inherit; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  .wrap { width: min(100% - 32px, 1200px); margin-inline: auto; }
+  header.top { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+  .top__bar { display: flex; align-items: center; gap: 16px; min-height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-size: 18px; text-decoration: none; }
+  .brand small { color: var(--muted); font-size: 13px; }
+  .tabs { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
+  .tab { border: 0; background: none; padding: 10px 14px; border-radius: var(--r); color: var(--muted); cursor: pointer; min-height: 44px; }
+  .tab[aria-selected="true"] { background: var(--surface-2); color: var(--ink); }
+  .tab .badge { display: inline-block; min-width: 20px; padding: 0 6px; margin-left: 6px; border-radius: 10px; background: var(--accent); color: var(--bg); font-size: 12px; font-weight: 600; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: var(--r); border: 1px solid var(--line); background: var(--surface-2); cursor: pointer; text-decoration: none; }
+  .btn--primary { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 500; }
+  .btn--ghost { background: none; }
+  .btn--danger { color: #ff8a73; }
+  .btn:disabled { opacity: .45; cursor: not-allowed; }
+  .btn:focus-visible, .tab:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  main { padding: 32px 0 80px; }
+  h1 { font-weight: 400; letter-spacing: -.03em; font-size: clamp(28px, 4vw, 44px); margin: 0 0 8px; }
+  h2 { font-weight: 400; letter-spacing: -.02em; font-size: 24px; margin: 0 0 16px; }
+  .lede { color: var(--muted); margin: 0 0 24px; max-width: 70ch; }
+  .demo { border: 1px dashed color-mix(in oklab, var(--accent) 60%, transparent); background: color-mix(in oklab, var(--accent) 9%, transparent); padding: 12px 16px; border-radius: var(--r); margin-bottom: 24px; font-size: 14px; }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+  .split { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 24px; align-items: start; }
+  @media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; margin-bottom: 14px; }
+  .field label { font-size: 13px; color: var(--muted); }
+  input, select, textarea { width: 100%; min-height: 44px; padding: 10px 12px; border-radius: var(--r); border: 1px solid var(--line); background: var(--bg); }
+  textarea { min-height: 90px; resize: vertical; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .list { display: grid; gap: 8px; }
+  .item { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
+  .item__year { font-size: 22px; letter-spacing: -.03em; }
+  .item__t { font-weight: 500; } .item__m { color: var(--muted); font-size: 13px; }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; background: var(--ink); vertical-align: 1px; }
+  .dot[data-kind="data"], .dot[data-kind="lead"] { background: var(--accent); } .dot[data-kind="camera"] { background: var(--muted); }
+  .actions { display: flex; gap: 6px; }
+  .actions .btn { min-height: 36px; padding: 0 12px; font-size: 13px; }
+  .msg { padding: 16px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); display: grid; gap: 6px; }
+  .msg[data-status="new"] { border-color: color-mix(in oklab, var(--accent) 60%, transparent); }
+  .msg__head { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; }
+  .msg__name { font-weight: 600; } .msg__when, .msg__meta { color: var(--muted); font-size: 13px; }
+  .pill { font-size: 12px; padding: 2px 8px; border-radius: 10px; border: 1px solid var(--line); color: var(--muted); }
+  .pill--new { border-color: var(--accent); color: var(--accent); }
+  .empty { color: var(--muted); padding: 24px; text-align: center; border: 1px dashed var(--line); border-radius: var(--r); }
+  .toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+  .toolbar input[type="search"] { max-width: 280px; }
+  /* calendar */
+  .cal__head { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .cal__head h2 { margin: 0 auto 0 0; } .cal__head h2::first-letter { text-transform: uppercase; }
+  .cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .cal__dow { font-size: 12px; color: var(--muted); text-align: center; padding: 6px 0; }
+  .cal__day { min-height: 74px; border: 1px solid var(--line); border-radius: 6px; padding: 6px; background: var(--surface); cursor: pointer; text-align: left; display: flex; flex-direction: column; gap: 3px; }
+  .cal__day[data-out] { opacity: .35; }
+  .cal__day[data-today] { border-color: var(--ink); }
+  .cal__day[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+  .cal__n { font-size: 13px; }
+  .cal__chip { font-size: 11px; border-radius: 4px; padding: 1px 5px; background: color-mix(in oklab, var(--ok) 22%, transparent); color: var(--ok); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cal__chip[data-status="held"] { background: color-mix(in oklab, #f5c451 22%, transparent); color: #f5c451; }
+  .cal__chip[data-status="booked"] { background: color-mix(in oklab, var(--accent) 22%, transparent); color: var(--accent); }
+  .gcal { margin-top: 20px; padding: 16px; border-radius: var(--r); border: 1px dashed var(--line); color: var(--muted); font-size: 14px; }
+  /* login */
+  .login { max-width: 420px; margin: 10vh auto; }
+  [hidden] { display: none !important; }
+  .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--surface-2); border: 1px solid var(--line); padding: 10px 16px; border-radius: var(--r); z-index: 10; }
+  @media (max-width: 640px) { .row2 { grid-template-columns: 1fr; } .item { grid-template-columns: 48px minmax(0, 1fr); } .item .actions { grid-column: 1 / -1; } .cal__day { min-height: 54px; } .cal__chip { display: none; } .cal__day[data-has]::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ok); } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap top__bar">
+    <a class="brand" href="index.html">Ledicia Castro <small>Admin</small></a>
+    <nav class="tabs" role="tablist" aria-label="Sections" data-when="in" hidden>
+      <button class="tab" role="tab" aria-selected="false" data-tab="web">Web</button>
+      <button class="tab" role="tab" aria-selected="true" data-tab="credits">Créditos</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="messages">Mensajes <span class="badge" data-new-count hidden>0</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="calendar">Calendario</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="backup">Copia</button>
+      <button class="tab" data-signout>Salir</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="demo" data-demo hidden><strong>Modo demo.</strong> Los cambios se guardan solo en este navegador. Cuando se conecte Supabase (js/config.js) todo quedará guardado en la base de datos y los mensajes de la web llegarán aquí desde cualquier dispositivo.</p>
+
+  <!-- login -->
+  <section class="login panel" data-when="out">
+    <h1>Entrar</h1>
+    <p class="lede">Panel privado de Ledicia.</p>
+    <form data-login>
+      <div class="field"><label for="l-email">Email</label><input id="l-email" type="email" autocomplete="username" required></div>
+      <div class="field"><label for="l-pass">Contraseña</label><input id="l-pass" type="password" autocomplete="current-password"></div>
+      <button class="btn btn--primary" type="submit">Entrar</button>
+      <p class="item__m" data-login-status role="status"></p>
+    </form>
+  </section>
+
+  <!-- web texts -->
+  <section data-panel="web" data-when="in" hidden>
+    <h1>Editar la web</h1>
+    <p class="lede">Abre la web en modo edición: los textos que se pueden cambiar tienen un borde rojo discontinuo. Haz clic, escribe y pulsa <strong>Guardar</strong> en la barra de abajo. Las películas se editan en la pestaña Créditos.</p>
+    <div class="toolbar"><a class="btn btn--primary" href="index.html?edit=1">Abrir la web en modo edición</a><a class="btn" href="index.html" target="_blank" rel="noopener">Ver la web</a></div>
+    <div class="split">
+      <div>
+        <h2>Textos cambiados</h2>
+        <div class="list" data-site-list></div>
+      </div>
+      <form class="panel" data-links-form>
+        <h2>Enlaces y contacto</h2>
+        <div class="field"><label for="w-linkedin">LinkedIn</label><input id="w-linkedin" name="link.linkedin" type="url" placeholder="https://www.linkedin.com/in/…"></div>
+        <div class="field"><label for="w-imdb">IMDb</label><input id="w-imdb" name="link.imdb" type="url" placeholder="https://www.imdb.com/name/…"></div>
+        <button class="btn btn--primary" type="submit">Guardar enlaces</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- credits -->
+  <section data-panel="credits" data-when="in" hidden>
+    <h1>Créditos</h1>
+    <p class="lede">Lo que añadas aquí aparece en la web: en la línea de tiempo, en los desplegables de servicios y en los contadores. Pon siempre un enlace público donde salga tu nombre (IMDb, Metacritic, ShotOnWhat…).</p>
+    <div class="split">
+      <div>
+        <div class="toolbar"><input type="search" placeholder="Buscar película…" data-credit-search aria-label="Buscar créditos"><span class="item__m" data-credit-count></span></div>
+        <div class="list" data-credit-list></div>
+      </div>
+      <form class="panel" data-credit-form>
+        <h2 data-credit-form-title>Añadir crédito</h2>
+        <input type="hidden" name="id">
+        <div class="field"><label for="c-title">Título</label><input id="c-title" name="title" required placeholder="Practical Magic 2"></div>
+        <div class="row2">
+          <div class="field"><label for="c-year">Año</label><input id="c-year" name="year" type="number" min="2000" max="2100" required></div>
+          <div class="field"><label for="c-kind">Tipo</label>
+            <select id="c-kind" name="kind"><option value="data">VFX data wrangling</option><option value="lead">Lead data wrangler</option><option value="lidar">LiDAR / environment capture</option><option value="camera">Cámara e iluminación</option></select></div>
+        </div>
+        <div class="field"><label for="c-role">Rol exacto en créditos</label><input id="c-role" name="role" required placeholder="VFX data wrangler"></div>
+        <div class="row2">
+          <div class="field"><label for="c-note">Formato</label><input id="c-note" name="note" placeholder="Feature · Series, 8 episodes"></div>
+          <div class="field"><label for="c-company">Productora / empresa</label><input id="c-company" name="company" placeholder="NBCUniversal"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="c-vfx">Estudios VFX</label><input id="c-vfx" name="vfx" placeholder="ILM, Framestore"></div>
+          <div class="field"><label for="c-camera">Cámara (publicada)</label><input id="c-camera" name="camera" placeholder="ARRI ALEXA 65"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="c-link">Enlace al crédito</label><input id="c-link" name="link" type="url" placeholder="https://www.imdb.com/…"></div>
+          <div class="field"><label for="c-source">Plataforma</label><input id="c-source" name="source" placeholder="IMDb" list="sources"></div>
+        </div>
+        <datalist id="sources"><option>IMDb</option><option>Metacritic</option><option>ShotOnWhat</option><option>LinkedIn</option><option>Plex</option></datalist>
+        <div class="toolbar"><button class="btn btn--primary" type="submit">Guardar</button><button class="btn btn--ghost" type="reset" data-credit-new>Nuevo</button></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- messages -->
+  <section data-panel="messages" data-when="in" hidden>
+    <h1>Mensajes</h1>
+    <p class="lede">Solicitudes enviadas desde el formulario "Hire Ledicia" de la web. Responde por email y márcalas como respondidas.</p>
+    <div class="toolbar">
+      <select data-msg-filter aria-label="Filtrar"><option value="all">Todos</option><option value="new">Nuevos</option><option value="replied">Respondidos</option><option value="archived">Archivados</option></select>
+      <button class="btn" data-msg-csv>Descargar CSV</button>
+    </div>
+    <div class="list" data-msg-list></div>
+  </section>
+
+  <!-- calendar -->
+  <section data-panel="calendar" data-when="in" hidden>
+    <h1>Calendario</h1>
+    <p class="lede">Privado: solo lo ves tú. Marca los huecos en los que estás libre para llamadas o rodajes. Más adelante se conectará con Google Calendar para que productoras reserven en esos huecos.</p>
+    <div class="split">
+      <div class="panel">
+        <div class="cal__head"><h2 data-cal-title></h2><button class="btn" data-cal-prev aria-label="Mes anterior">‹</button><button class="btn" data-cal-today>Hoy</button><button class="btn" data-cal-next aria-label="Mes siguiente">›</button></div>
+        <div class="cal" data-cal></div>
+        <div class="gcal"><strong>Google Calendar:</strong> pendiente de conectar. Cuando esté, los huecos se crearán también en tu Google Calendar y las reservas de la web llegarán aquí. <button class="btn" disabled>Conectar Google Calendar</button></div>
+      </div>
+      <div>
+        <form class="panel" data-slot-form>
+          <h2>Añadir hueco</h2>
+          <div class="field"><label for="s-date">Día</label><input id="s-date" name="date" type="date" required></div>
+          <div class="row2">
+            <div class="field"><label for="s-from">Desde</label><input id="s-from" name="from" type="time" value="10:00" required></div>
+            <div class="field"><label for="s-to">Hasta</label><input id="s-to" name="to" type="time" value="11:00" required></div>
+          </div>
+          <div class="field"><label for="s-status">Estado</label><select id="s-status" name="status"><option value="free">Libre</option><option value="held">Reservado provisional</option><option value="booked">Confirmado</option></select></div>
+          <div class="field"><label for="s-note">Nota</label><input id="s-note" name="note" placeholder="Llamada con productora, día de escaneo…"></div>
+          <button class="btn btn--primary" type="submit">Guardar hueco</button>
+        </form>
+        <h2 style="margin-top:24px" data-day-title>Próximos huecos</h2>
+        <div class="list" data-slot-list></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- backup -->
+  <section data-panel="backup" data-when="in" hidden>
+    <h1>Copia de seguridad</h1>
+    <p class="lede">Descarga todo (créditos, mensajes y calendario) en un archivo. También puedes cargar créditos desde un archivo exportado.</p>
+    <div class="toolbar"><button class="btn btn--primary" data-export>Descargar copia (.json)</button><label class="btn">Importar créditos<input type="file" accept="application/json" data-import hidden></label></div>
+  </section>
+</main>
+<script type="module" src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en-GB" data-type="service" data-radius="sharp" data-buttons="solid" data-motion>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ledicia Castro: VFX data wrangler and LiDAR scanning in London</title>
+<meta name="description" content="On-set VFX data, texture and HDRI photography and LiDAR scans of sets and props, with credits on Wicked, Jurassic World, The Batman and No Time to Die.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ledicia Castro: VFX data wrangler and LiDAR scanning in London">
+<meta property="og:description" content="On-set VFX data and LiDAR set scanning, with credits on Wicked, Jurassic World and The Batman.">
+<meta property="og:image" content="img/share.jpg"><!-- make absolute once the domain is set -->
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0e0d0c">
+<!-- <link rel="canonical" href="https://[the client's domain]/"> : add once Ledicia has a domain -->
+<meta name="site-kind" content="tech">
+<meta name="page-type" content="service">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #0e0d0c; --p-surface: #181614; --p-ink: #f2ede6; --p-muted: #a39b91;
+  --p-accent: #ff4b2b; --p-accent-ink: #0e0d0c; --p-action: #ff4b2b; --p-action-ink: #0e0d0c;
+  --p-inv-bg: #f2ede6; --p-inv-surface: #e0dbd4; --p-inv-ink: #0e0d0c; --p-inv-muted: #5a5754;
+  --p-inv-accent: #0e0d0c; --p-inv-accent-ink: #f2ede6; --p-inv-action: #0e0d0c; --p-inv-action-ink: #f2ede6;
+  --font-display: "Hanken Grotesk", system-ui, sans-serif;
+  --font-text: "Hanken Grotesk", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.03em;
+  --display-tracking-xl: -0.038em;
+}
+</style>
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro-on');setTimeout(()=>{if(!document.querySelector('#intro.is-live'))document.documentElement.classList.remove('intro-on')},8000)}</script>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script src="assets/backgrounds/backgrounds.js"></script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/liquid-type/moment.js">
+<link rel="modulepreload" href="assets/moments/word-highlight/moment.js">
+<style>
+  /* the scan section's wide point cloud, across the wrap */
+  .scan { margin: 0; border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 1280 / 440; background: #0e0d0c; border: 1px solid var(--line); }
+  .scan > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+  /* one cinematic grade across the stand-in photographs, so daylight frames sit on the dark page */
+  @media (max-width: 639px) { .scan { aspect-ratio: 4 / 3; } .scan > img { object-position: 40% 50%; } }
+  .career-stats { margin-bottom: var(--s-7); }
+  @media (max-width: 1023px) { #services .frame--fill, #career .frame--fill { height: auto; aspect-ratio: 4 / 3; flex: none; } }
+  @media (max-width: 639px) { #credits .rows__name small { display: none; } #services .frame--fill { aspect-ratio: 4 / 5; } }
+  @media (min-width: 640px) and (max-width: 1023px) { #credits, #career { --h: 2 } #scanning .scan { aspect-ratio: 4 / 3; } #scanning .scan > img { object-position: 30% 0; } }
+  /* filmography timeline */
+  .tl-legend { display: flex; gap: var(--s-5); list-style: none; margin: 0; padding: 0; font-size: var(--t-small); color: var(--muted); align-self: end; }
+  .tl-legend li::before, .tl__item::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; vertical-align: 1px; background: var(--k); }
+  [data-kind="lidar"] { --k: var(--p-ink); } [data-kind="data"] { --k: var(--p-accent); } [data-kind="lead"] { --k: var(--p-accent); }
+  .tl-legend li[data-kind="lead"]::before { border-radius: 2px; width: 14px; }
+  .tl-phases { display: grid; grid-template-columns: repeat(var(--tl-cols, 8), 1fr); gap: 12px; margin: var(--s-6) 0 var(--s-3); font-size: var(--t-label); color: var(--muted); }
+  .tl-phases span { border-top: 2px solid var(--line); padding-top: 8px; }
+  .tl-phases span:last-child { border-color: var(--p-accent); color: var(--p-ink); }
+  .tl { display: grid; grid-template-columns: repeat(var(--tl-cols, 8), minmax(0, 1fr)); gap: 12px; }
+  .tl__year { margin: 0 0 12px; font-size: var(--t-stat); font-family: var(--font-display); letter-spacing: -0.03em; line-height: 1; }
+  .tl__col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .tl__item { all: unset; box-sizing: border-box; display: grid; grid-template-columns: auto 1fr; width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--r-sm); cursor: pointer; transition: border-color .2s, background-color .2s, transform .2s; }
+  .tl__item::before { grid-row: 1 / 3; margin-top: 6px; }
+  .tl__item[data-kind="lead"] { background: color-mix(in oklab, var(--p-accent) 14%, transparent); border-color: var(--p-accent); }
+  .tl__item:hover, .tl__item[aria-current="true"] { border-color: var(--k); transform: translateY(-2px); }
+  .tl__item:focus-visible { outline: 2px solid var(--p-action); outline-offset: 2px; }
+  .tl__t { font-size: 14px; font-weight: 500; line-height: 1.25; }
+  .tl__r { grid-column: 2; font-size: var(--t-label); color: var(--muted); line-height: 1.3; margin-top: 2px; }
+  .tl-card { display: grid; grid-template-columns: 5fr 7fr; gap: var(--s-6); align-items: end; margin-top: var(--s-7); padding-top: var(--s-5); border-top: 1px solid var(--line); }
+  .tl-card__meta { margin: 0 0 6px; font-size: var(--t-small); color: var(--p-accent); }
+  .tl-card__title { margin: 0; font-size: var(--t-h3); font-weight: 400; letter-spacing: -0.02em; }
+  .tl-card__facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); margin: 0; }
+  .tl-card__facts dt { font-size: var(--t-label); color: var(--muted); } .tl-card__facts dd { margin: 4px 0 0; }
+  @media (max-width: 1023px) { .tl { grid-template-columns: repeat(4, 1fr); row-gap: var(--s-6); } .tl-phases { display: none; } }
+  @media (max-width: 639px) { .tl { grid-template-columns: 1fr; row-gap: var(--s-5); } .tl__col { display: grid; grid-template-columns: 64px 1fr; } .tl__year { font-size: 22px; } .tl-card { grid-template-columns: 1fr; margin: 0 0 var(--s-4); padding: var(--s-4); border: 1px solid var(--p-accent); border-radius: var(--r-md); } .tl-card[hidden] { display: none; } .tl-card__facts { grid-template-columns: 1fr 1fr; } .tl-legend { margin-top: var(--s-4); flex-wrap: wrap; } }
+  @media (prefers-reduced-motion: reduce) { .tl__item { transition: none; } .tl__item:hover { transform: none; } }
+  /* techniques and kit: a spec sheet in four columns */
+  .kit__col h3 { font-size: var(--t-card); font-weight: 500; margin: 0 0 var(--s-5); padding-top: var(--s-4); border-top: 2px solid var(--p-accent); }
+  .kit__col:nth-child(odd) h3 { border-color: var(--p-ink); }
+  .kit__col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .kit__col li { padding: 12px 0; border-bottom: 1px solid var(--line); font-size: var(--t-body); }
+  @media (max-width: 1023px) { .kit .span-3 { grid-column: span 6; } }
+  @media (max-width: 639px) { .kit .span-3 { grid-column: 1 / -1; } }
+  /* sections grow with their content (never overlap the next one at tablet or phone widths) */
+  main > section.section, main > section.hero, footer.closing { height: auto !important; min-height: calc(var(--h, 1) * 100svh); }
+  @media (max-width: 639px) { main > section.section, footer.closing { min-height: 0; padding-bottom: calc(var(--padb) + var(--bar, 0px) + 24px); } }
+  main > section { overflow: clip; }
+  /* services: each line opens onto its productions */
+  .svc-list > li { display: block; padding: 0; }
+  .svc > summary { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr) max-content; gap: var(--s-1) var(--s-5); padding-block: var(--s-4); cursor: pointer; min-height: 44px; }
+  .svc > summary::-webkit-details-marker { display: none; }
+  .svc > summary:focus-visible { outline: 2px solid var(--p-action); outline-offset: 4px; }
+  .svc .rows__value { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
+  .svc .chev { width: 14px; height: 14px; transition: transform .25s ease; color: var(--p-accent); }
+  .svc[open] .chev { transform: rotate(180deg); }
+  .svc > summary:hover .rows__name { color: var(--p-accent); }
+  .prod { list-style: none; margin: 0 0 var(--s-4); padding: 0; display: grid; gap: 2px; animation: prod-in .35s ease both; }
+  @keyframes prod-in { from { opacity: 0; transform: translateY(-6px); } }
+  .prod__link { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: var(--s-4); align-items: baseline; padding: 9px 12px; border-radius: var(--r-sm); background: color-mix(in oklab, var(--p-ink) 4%, transparent); color: var(--p-ink); text-decoration: none; min-height: 40px; transition: background-color .2s; }
+  .prod__link:hover { background: color-mix(in oklab, var(--p-accent) 14%, transparent); }
+  .prod__link:focus-visible { outline: 2px solid var(--p-action); outline-offset: 2px; }
+  .prod__t { font-size: 15px; }
+  .prod__note { color: var(--p-accent); font-size: var(--t-label); margin-left: 6px; }
+  .prod__y, .prod__src { font-size: var(--t-label); color: var(--muted); }
+  .prod__src { display: inline-flex; gap: 4px; align-items: center; }
+  .ext { width: 10px; height: 10px; }
+  .tl-card__link { grid-column: 1 / -1; justify-self: start; }
+  @media (max-width: 639px) { .prod__link { grid-template-columns: minmax(0, 1fr) auto; } .prod__y { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .prod { animation: none; } .svc .chev { transition: none; } }
+  /* hire block: the page's strongest call */
+  .hire { padding: var(--s-7); border: 1px solid color-mix(in oklab, var(--p-accent) 55%, transparent); border-radius: var(--r-lg); background: radial-gradient(120% 140% at 0% 0%, color-mix(in oklab, var(--p-accent) 16%, transparent), transparent 55%), var(--p-surface); }
+  .hire__kicker { margin: 0; font-size: var(--t-small); color: var(--p-accent); display: inline-flex; align-items: center; gap: 8px; }
+  .hire__kicker .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--p-accent); box-shadow: 0 0 0 4px color-mix(in oklab, var(--p-accent) 25%, transparent); }
+  .hire h2 { font-size: var(--t-h2); }
+  .hire__points { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .hire__points li { padding-left: 22px; position: relative; } .hire__points li::before { content: ""; position: absolute; left: 0; top: .6em; width: 10px; height: 2px; background: var(--p-accent); }
+  .hire__alt { font-size: var(--t-small); color: var(--muted); margin: 0; }
+  .hire form.form { display: block; } .hire form.form > * + * { margin-top: var(--s-4); } .hire .field { margin: 0; }
+  .hire__points { margin-top: var(--s-2) !important; }
+  .hire__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
+  .hire select, .hire textarea { width: 100%; font: inherit; color: var(--p-ink); background: var(--p-bg); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 12px; min-height: 48px; }
+  .hire textarea { resize: vertical; }
+  @media (max-width: 639px) { .hire { padding: var(--s-5); } .hire__row { grid-template-columns: 1fr; } }
+  .rows__name small { display: block; font-weight: 400; color: var(--muted); font-size: var(--t-small); }
+</style>
+<style>
+  /* 3D intro: a tall scroll track with the canvas pinned (sticky) inside it */
+  .intro { position: relative; padding: 0 !important; background: #0e0d0c; min-height: 0 !important; }
+  .intro__stage { position: relative; }
+  .intro__stage canvas { display: none; }
+  .intro__labels { position: relative; display: grid; gap: var(--s-8); padding: calc(var(--nav) + var(--s-9)) 0 var(--s-9); }
+  .intro__step { position: relative; }
+  .intro__step .wrap { display: grid; gap: var(--s-3); }
+  .intro__kicker { font-size: var(--t-label); color: var(--p-accent); font-weight: 500; letter-spacing: 0; margin: 0; }
+  .intro__title { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.035em; line-height: 1; font-size: clamp(40px, 5.6vw, 92px); margin: 0; color: var(--p-ink); text-wrap: balance; }
+  .intro__role { margin: 0; font-size: var(--t-lead); color: var(--p-muted); max-width: 46ch; }
+  .intro__hint { font-size: var(--t-small); color: var(--p-muted); margin: var(--s-4) 0 0; }
+  .intro__skip { display: none; }
+  html.intro-on .intro { height: 600svh !important; }
+  html.intro-on .intro__stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+  html.intro-on .intro__stage canvas { display: block; position: absolute; inset: 0; width: 100%; height: 100%; }
+  html.intro-on .intro__labels { position: absolute; inset: 0; display: block; padding: 0; pointer-events: none; background: linear-gradient(to top, rgba(14,13,12,.92) 0%, rgba(14,13,12,.55) 28%, rgba(14,13,12,0) 52%); }
+  html.intro-on .intro__step { position: absolute; left: 0; right: 0; bottom: 88px; opacity: 0; will-change: opacity, transform; }
+  html.intro-on .intro__step:first-child { opacity: 1; }
+  html.intro-on .intro__skip { display: inline-flex; position: absolute; right: var(--gut, 80px); bottom: 32px; pointer-events: auto; font-size: var(--t-small); color: var(--p-muted); }
+  .intro-still .nav, .intro-still .intro__labels, .intro-still .intro__skip, .intro-still .actionbar { display: none !important; }
+</style>
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" } }</script>
+</head>
+<body>
+<!-- type: service (site-kind tech: LiDAR scanning and VFX data are a technical trade)
+     deal: hero split, nav nav-centre, close close-type (close-photo dealt again: no fourth photograph), footer footer-columns
+     (footer-visit dealt again: no door to visit), rhythm surface-pairs, buttons solid, mark stack, grounds none
+     palette: the client's brief (dark, cinematic; laser red accent) via start.mjs brand; type hanken
+     effect: dot-terrain in the hero frame (a laser-scan point cloud: the work itself)
+     moments: liquid-type (hero h1), word-highlight (#story); counter-rolls left still (two moments at most); picture-develops dealt again for tech -->
+
+<header class="nav nav--centre">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#hero-h">Skip to content</a>
+    <a class="nav__logo" href="#top"><span class="mark" data-mark="stack" aria-hidden="true"></span>Ledicia Castro</a>
+    <nav class="nav__links" aria-label="Main">
+      <div class="nav__item">
+        <a class="nav__link" href="#services">Services <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav__menu">
+          <div class="wrap grid">
+            <div class="menu-col span-4">
+              <p class="t-label">On set</p>
+              <a href="#services">VFX data wrangling<span>Camera, lens and set data</span></a>
+              <a href="#services">Texture and HDRI photography<span>References shot to the vendor's spec</span></a>
+            </div>
+            <div class="menu-col span-4">
+              <p class="t-label">Scanning</p>
+              <a href="#scanning">LiDAR and environment capture<span>Sets, locations and props</span></a>
+              <a href="#credits">Credits<span>Thirteen features, four series</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav__item"><a class="nav__link" href="#credits">Credits</a></div>
+      <div class="nav__item"><a class="nav__link" href="#skills">Skills</a></div>
+      <div class="nav__item"><a class="nav__link" href="#career">Career</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="#availability">Check availability</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="intro" id="intro" aria-label="Credits in LiDAR">
+    <div class="intro__stage">
+      <canvas id="intro-canvas" aria-hidden="true"></canvas>
+      <div class="intro__labels">
+        <div class="intro__step" data-intro-step><div class="wrap"><p class="intro__kicker" data-edit="intro.0.kicker">VFX data &amp; LiDAR capture</p><p class="intro__title" data-edit="intro.0.title">Every set, captured point by point</p><p class="intro__hint" data-edit="intro.0.hint">Scroll to fly through the scans</p></div></div>
+        <div class="intro__step" data-intro-step><div class="wrap"><p class="intro__kicker" data-edit="intro.1.kicker">2022 · Lidar Lounge</p><p class="intro__title" data-edit="intro.1.title">The Batman</p><p class="intro__role" data-edit="intro.1.role">Scanning technician</p></div></div>
+        <div class="intro__step" data-intro-step><div class="wrap"><p class="intro__kicker" data-edit="intro.2.kicker">2024 to 2025 · NBCUniversal</p><p class="intro__title" data-edit="intro.2.title">Wicked and Wicked: For Good</p><p class="intro__role" data-edit="intro.2.role">VFX data wrangler</p></div></div>
+        <div class="intro__step" data-intro-step><div class="wrap"><p class="intro__kicker" data-edit="intro.3.kicker">2022 to 2025</p><p class="intro__title" data-edit="intro.3.title">Jurassic World Dominion and Rebirth</p><p class="intro__role" data-edit="intro.3.role">Environment capture, then data wrangling</p></div></div>
+        <div class="intro__step" data-intro-step><div class="wrap"><p class="intro__kicker" data-edit="intro.4.kicker">2019 to 2023</p><p class="intro__title" data-edit="intro.4.title">Hobbs &amp; Shaw and Fast X</p><p class="intro__role" data-edit="intro.4.role">LiDAR scanning, then second-unit data wrangling</p></div></div>
+        <div class="intro__step" data-intro-step><div class="wrap"><p class="intro__kicker" data-edit="intro.5.kicker">London</p><p class="intro__role" data-edit="intro.5.role">VFX data wrangler and LiDAR capture specialist. 13 feature films, 4 series.</p></div></div>
+      </div>
+      <a class="intro__skip link" href="#hero-h">Skip the intro</a>
+    </div>
+  </section>
+
+  <section class="hero hero--split" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text grid hero__grid">
+      <div class="hero__text span-5">
+        <p class="hero__kicker"><span class="dot" aria-hidden="true"></span><span data-edit="hero.kicker">Lead data wrangler on Practical Magic 2, 2026</span></p>
+        <h1 id="hero-h" class="mo-lt__type" data-moment="liquid-type" data-moment-opts='{"strength": 1.2}' data-edit="hero.title">VFX data wrangler in London</h1>
+        <p class="hero__lead" data-edit="hero.lead">Camera data, HDRIs and LiDAR scans that VFX vendors build on. For NBCUniversal, Netflix and Wētā FX.</p>
+        <div class="btn-row"><a class="btn btn--primary" href="#availability">Check availability<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a><a class="btn btn--secondary" href="#credits">See the credits</a></div>
+      </div>
+      <div class="hero__media span-6 start-7" data-fx="dot-terrain" data-fx-seed="7" data-fx-params='{"spacing":10,"dot":3.4,"amplitude":0.22,"waveScale":1.2,"speed":0.12,"opacity":1,"shade":0.55,"fog":0.2,"haze":0.15,"horizon":0.2,"calm":0.5,"calmX":0.3,"calmY":0.88}' role="img" aria-label="A laser-scan point cloud of rolling ground, drawn dot by dot">
+        <div class="ly-float">
+          <div class="ly-float__row"><span class="ly-live" data-edit="hero.card.kicker">Since 2018</span><span><span data-count-total>17</span> productions</span></div>
+          <div class="ly-float__title" data-edit="hero.card">Wicked, Jurassic World, The Batman, No Time to Die</div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="section" id="services" style="--hm: 2" data-flow aria-labelledby="services-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="services-h" data-edit="services.title">On-set VFX data and LiDAR capture</h2><p class="t-lead measure"><span data-count-total>17</span> productions, delivered to the pipelines of ILM, Wētā FX, DNEG and Framestore. Open a line to see every credit.</p></div>
+      <div class="grid grid--top fill">
+        <ul class="rows svc-list span-6"><li><details class="svc" data-svc="data"><summary><span class="rows__name"><span data-edit="services.data.name">VFX data wrangling</span><small data-edit="services.data.line">Every setup logged, every plate matchable.</small></span><span class="rows__value"><span data-svc-count>9 productions</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary><ul class="prod"><li><a class="prod__link" href="https://www.metacritic.com/movie/practical-magic-2/credits/" target="_blank" rel="noopener"><span class="prod__t">Practical Magic 2 <span class="prod__note">Lead</span></span><span class="prod__y">2026</span><span class="prod__src">Metacritic<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a class="prod__link" href="https://www.metacritic.com/movie/the-last-house/credits/" target="_blank" rel="noopener"><span class="prod__t">The Last House</span><span class="prod__y">2026</span><span class="prod__src">Metacritic<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a class="prod__link" href="https://www.metacritic.com/tv/the-walking-dead-daryl-dixon/credits/" target="_blank" rel="noopener"><span class="prod__t">The Walking Dead: Daryl Dixon <span class="prod__note">7 episodes</span></span><span class="prod__y">2025</span><span class="prod__src">Metacritic<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a class="prod__link" href="https://www.metacritic.com/movie/wicked-for-good/credits/" target="_blank" rel="noopener"><span class="prod__t">Wicked: For Good</span><span class="prod__y">2025</span><span class="prod__src">Metacritic<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a class="prod__link" href="https://www.metacritic.com/person/ledicia-castro/" target="_blank" rel="noopener"><span class="prod__t">Jurassic World Rebirth</span><span class="prod__y">2025</span><span class="prod__src">Metacritic<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a class="prod__link" href="https://www.metacritic.com/movie/better-man/credits/" target="_blank" rel="noopener"><span class="prod__t">Better Man <span class="prod__note">Wētā FX</span></span><span class="prod__y">2024</span><span class="prod__src">Metacritic<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a class="prod__link" href="https://www.metacritic.com/person/ledicia-castro/" target="_blank" rel="noopener"><span class="prod__t">Wicked</span><span class="prod__y">2024</span><span class="prod__src">Metacritic<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a class="prod__link" href="https://www.imdb.com/name/nm6484884/" target="_blank" rel="noopener"><span class="prod__t">Kaos <span class="prod__note">Netflix</span></span><span class="prod__y">2024</span><span class="prod__src">IMDb<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a class="prod__link" href="https://www.metacritic.com/person/ledicia-castro/" target="_blank" rel="noopener"><span class="prod__t">Fast X <span class="prod__note">Second unit</span></span><span class="prod__y">2023</span><span class="prod__src">Metacritic<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li></ul></details></li><li><details class="svc" data-svc="lidar"><summary><span class="rows__name"><span data-edit="services.lidar.name">LiDAR and environment capture</span><small data-edit="services.lidar.line">Sets and props scanned before they are struck.</small></span><span class="rows__value"><span data-svc-count>8 productions</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary><ul class="prod"><li><a class="prod__link" href="https://www.metacritic.com/movie/jurassic-world-dominion/credits/" target="_blank" rel="noopener"><span class="prod__t">Jurassic World Dominion</span><span class="prod__y">2022</span><span class="prod__src">Metacritic<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a class="prod__link" href="https://shotonwhat.com/the-batman-2022" target="_blank" rel="noopener"><span class="prod__t">The Batman</span><span class="prod__y">2022</span><span class="prod__src">ShotOnWhat<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a class="prod__link" href="https://www.metacritic.com/person/ledicia-castro/" target="_blank" rel="noopener"><span class="prod__t">Death on the Nile</span><span class="prod__y">2022</span><span class="prod__src">Metacritic<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a class="prod__link" href="https://shotonwhat.com/no-time-to-die-2021" target="_blank" rel="noopener"><span class="prod__t">No Time to Die</span><span class="prod__y">2021</span><span class="prod__src">ShotOnWhat<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a class="prod__link" href="https://shotonwhat.com/wonder-woman-1984-2020" target="_blank" rel="noopener"><span class="prod__t">Wonder Woman 1984</span><span class="prod__y">2020</span><span class="prod__src">ShotOnWhat<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a class="prod__link" href="https://www.metacritic.com/tv/devs/credits/" target="_blank" rel="noopener"><span class="prod__t">Devs <span class="prod__note">8 episodes</span></span><span class="prod__y">2020</span><span class="prod__src">Metacritic<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a class="prod__link" href="https://www.metacritic.com/tv/cursed-2020/credits/" target="_blank" rel="noopener"><span class="prod__t">Cursed <span class="prod__note">10 episodes</span></span><span class="prod__y">2020</span><span class="prod__src">Metacritic<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a class="prod__link" href="https://www.metacritic.com/person/ledicia-castro/" target="_blank" rel="noopener"><span class="prod__t">Hobbs &amp; Shaw</span><span class="prod__y">2019</span><span class="prod__src">Metacritic<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li></ul></details></li><li><details class="svc" data-svc="texture"><summary><span class="rows__name"><span data-edit="services.texture.name">Texture and HDRI photography</span><small data-edit="services.texture.line">Shot to the vendor's spec.</small></span><span class="rows__value">Wētā FX<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary><ul class="prod"><li><a class="prod__link" href="https://www.metacritic.com/movie/better-man/credits/" target="_blank" rel="noopener"><span class="prod__t">Better Man <span class="prod__note">Texture photography</span></span><span class="prod__y">2024</span><span class="prod__src">Metacritic<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li></ul></details></li><li><details class="svc" data-svc="camera"><summary><span class="rows__name"><span data-edit="services.camera.name">Camera and lighting</span><small data-edit="services.camera.line">Trained on set before VFX.</small></span><span class="rows__value">Shorts<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary><ul class="prod"><li><a class="prod__link" href="https://watch.plex.tv/movie/chef-4" target="_blank" rel="noopener"><span class="prod__t">Chef <span class="prod__note">Cinematographer</span></span><span class="prod__y">2016</span><span class="prod__src">Plex<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li><li><a class="prod__link" href="https://www.imdb.com/title/tt4171544/" target="_blank" rel="noopener"><span class="prod__t">Predator: Dark Ages <span class="prod__note">Spark</span></span><span class="prod__y">2015</span><span class="prod__src">IMDb<svg class="ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li></ul></details></li></ul>
+        <div class="frame frame--photo frame--fill span-6 start-7"><img class="frame__img" src="img/scenes/towers.jpg" width="1200" height="1200" alt="A LiDAR point cloud of tall spires, a red laser line crossing them" loading="lazy" decoding="async" data-source="client" data-subject="point-cloud render"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ground-surface" id="credits" style="--hm: 2" aria-labelledby="credits-h">
+    <div class="wrap">
+      <div class="section-head section-head--split"><h2 id="credits-h">13 features, 4 series, one path</h2>
+        <ul class="tl-legend" aria-label="Key"><li data-kind="lidar">LiDAR capture</li><li data-kind="data">VFX data wrangling</li><li data-kind="lead">Lead</li></ul></div>
+      <div class="tl-phases" aria-hidden="true"><span style="grid-column: 1 / 5">Lidar Lounge, London</span><span style="grid-column: 5 / 9">On-set VFX data, main and second unit</span></div>
+      <div class="tl" data-timeline><div class="tl__col"><p class="tl__year">2019</p><ul><li><button type="button" class="tl__item" data-kind="lidar" data-title="Hobbs &amp; Shaw" data-link="https://www.metacritic.com/person/ledicia-castro/" data-src="Metacritic" data-camera="ARRI Alexa SXT and Alexa Mini, Hawk anamorphics" data-vendor="DNEG, Framestore" data-year="2019" data-role="LiDAR scanning" data-company="Lidar Lounge" data-note="Feature"><span class="tl__t">Hobbs &amp; Shaw</span><span class="tl__r">LiDAR scanning</span></button></li></ul></div><div class="tl__col"><p class="tl__year">2020</p><ul><li><button type="button" class="tl__item" data-kind="lidar" data-title="Wonder Woman 1984" data-link="https://shotonwhat.com/wonder-woman-1984-2020" data-src="ShotOnWhat" data-camera="35mm, 65mm and IMAX film" data-vendor="DNEG, Framestore, Method" data-year="2020" data-role="Environment capture, cyberscanning" data-company="Lidar Lounge" data-note="Feature"><span class="tl__t">Wonder Woman 1984</span><span class="tl__r">Environment capture</span></button></li><li><button type="button" class="tl__item" data-kind="lidar" data-title="Devs" data-link="https://www.metacritic.com/tv/devs/credits/" data-src="Metacritic" data-camera="Sony VENICE, Panavision C-Series" data-vendor="DNEG" data-year="2020" data-role="LiDAR scanning, cyberscanning" data-company="Lidar Lounge" data-note="FX series, 8 episodes"><span class="tl__t">Devs</span><span class="tl__r">LiDAR scanning</span></button></li><li><button type="button" class="tl__item" data-kind="lidar" data-title="Cursed" data-link="https://www.metacritic.com/tv/cursed-2020/credits/" data-src="Metacritic" data-camera="Sony VENICE, 6K" data-vendor="Freefolk" data-year="2020" data-role="LiDAR scanning, cyberscanning" data-company="Lidar Lounge" data-note="Netflix series, 10 episodes"><span class="tl__t">Cursed</span><span class="tl__r">LiDAR scanning</span></button></li></ul></div><div class="tl__col"><p class="tl__year">2021</p><ul><li><button type="button" class="tl__item" data-kind="lidar" data-title="No Time to Die" data-link="https://shotonwhat.com/no-time-to-die-2021" data-src="ShotOnWhat" data-camera="35mm, 65mm and IMAX film" data-vendor="Framestore, ILM, DNEG" data-year="2021" data-role="LiDAR scanning" data-company="Lidar Lounge" data-note="Feature"><span class="tl__t">No Time to Die</span><span class="tl__r">LiDAR scanning</span></button></li></ul></div><div class="tl__col"><p class="tl__year">2022</p><ul><li><button type="button" class="tl__item" data-kind="lidar" data-title="The Batman" data-link="https://shotonwhat.com/the-batman-2022" data-src="ShotOnWhat" data-camera="ARRI ALEXA LF and Mini LF" data-vendor="ILM, Wētā FX, Scanline" data-year="2022" data-role="Scanning technician" data-company="Lidar Lounge" data-note="Feature"><span class="tl__t">The Batman</span><span class="tl__r">Scanning technician</span></button></li><li><button type="button" class="tl__item" data-kind="lidar" data-title="Death on the Nile" data-link="https://www.metacritic.com/person/ledicia-castro/" data-src="Metacritic" data-camera="Panavision System 65 film" data-vendor="DNEG" data-year="2022" data-role="Environment capture" data-company="Lidar Lounge" data-note="Feature"><span class="tl__t">Death on the Nile</span><span class="tl__r">Environment capture</span></button></li><li><button type="button" class="tl__item" data-kind="lidar" data-title="Jurassic World Dominion" data-link="https://www.metacritic.com/movie/jurassic-world-dominion/credits/" data-src="Metacritic" data-camera="Panavision 65mm and VistaVision" data-vendor="ILM" data-year="2022" data-role="Environment capture specialist" data-company="Lidar Lounge" data-note="Feature"><span class="tl__t">Jurassic World Dominion</span><span class="tl__r">Environment capture specialist</span></button></li></ul></div><div class="tl__col"><p class="tl__year">2023</p><ul><li><button type="button" class="tl__item" data-kind="data" data-title="Fast X" data-link="https://www.metacritic.com/person/ledicia-castro/" data-src="Metacritic" data-camera="" data-vendor="DNEG" data-year="2023" data-role="Data wrangler, second unit" data-company="NBCUniversal" data-note="Feature"><span class="tl__t">Fast X</span><span class="tl__r">Data wrangler</span></button></li></ul></div><div class="tl__col"><p class="tl__year">2024</p><ul><li><button type="button" class="tl__item" data-kind="data" data-title="Wicked" data-link="https://www.metacritic.com/person/ledicia-castro/" data-src="Metacritic" data-camera="ARRI ALEXA 65, Panavision anamorphics" data-vendor="ILM, Framestore" data-year="2024" data-role="VFX data wrangler" data-company="NBCUniversal" data-note="Feature"><span class="tl__t">Wicked</span><span class="tl__r">VFX data wrangler</span></button></li><li><button type="button" class="tl__item" data-kind="data" data-title="Better Man" data-link="https://www.metacritic.com/movie/better-man/credits/" data-src="Metacritic" data-camera="" data-vendor="Wētā FX" data-year="2024" data-role="VFX data wrangler, texture photography" data-company="Wētā FX" data-note="Feature"><span class="tl__t">Better Man</span><span class="tl__r">VFX data wrangler</span></button></li><li><button type="button" class="tl__item" data-kind="data" data-title="Kaos" data-link="https://www.imdb.com/name/nm6484884/" data-src="IMDb" data-camera="Sony VENICE, Cooke lenses" data-vendor="Cinesite, Freefolk, Milk" data-year="2024" data-role="VFX data wrangler" data-company="Netflix" data-note="Netflix series"><span class="tl__t">Kaos</span><span class="tl__r">VFX data wrangler</span></button></li></ul></div><div class="tl__col"><p class="tl__year">2025</p><ul><li><button type="button" class="tl__item" data-kind="data" data-title="Wicked: For Good" data-link="https://www.metacritic.com/movie/wicked-for-good/credits/" data-src="Metacritic" data-camera="" data-vendor="ILM, Framestore" data-year="2025" data-role="Data wrangler" data-company="NBCUniversal" data-note="Feature"><span class="tl__t">Wicked: For Good</span><span class="tl__r">Data wrangler</span></button></li><li><button type="button" class="tl__item" data-kind="data" data-title="Jurassic World Rebirth" data-link="https://www.metacritic.com/person/ledicia-castro/" data-src="Metacritic" data-camera="35mm Kodak film, Panavision" data-vendor="ILM" data-year="2025" data-role="VFX data wrangler" data-company="Universal" data-note="Feature"><span class="tl__t">Jurassic World Rebirth</span><span class="tl__r">VFX data wrangler</span></button></li><li><button type="button" class="tl__item" data-kind="data" data-title="The Walking Dead: Daryl Dixon" data-link="https://www.metacritic.com/tv/the-walking-dead-daryl-dixon/credits/" data-src="Metacritic" data-camera="" data-vendor="MPC, BUF" data-year="2025" data-role="VFX data wrangler" data-company="AMC" data-note="Series, 7 episodes"><span class="tl__t">The Walking Dead: Daryl Dixon</span><span class="tl__r">VFX data wrangler</span></button></li></ul></div><div class="tl__col"><p class="tl__year">2026</p><ul><li><button type="button" class="tl__item" data-kind="data" data-title="The Last House" data-link="https://www.metacritic.com/movie/the-last-house/credits/" data-src="Metacritic" data-camera="" data-vendor="ILM" data-year="2026" data-role="VFX data wrangler" data-company="" data-note="Feature"><span class="tl__t">The Last House</span><span class="tl__r">VFX data wrangler</span></button></li><li><button type="button" class="tl__item" data-kind="lead" data-title="Practical Magic 2" data-link="https://www.metacritic.com/movie/practical-magic-2/credits/" data-src="Metacritic" data-camera="" data-vendor="One of Us" data-year="2026" data-role="VFX lead data wrangler" data-company="" data-note="Feature"><span class="tl__t">Practical Magic 2</span><span class="tl__r">VFX lead data wrangler</span></button></li></ul></div></div>
+      <div class="tl-card">
+        <div><p class="tl-card__meta" data-f="meta">2026 · Feature</p><h3 class="tl-card__title" data-f="title">Practical Magic 2</h3></div>
+        <dl class="tl-card__facts"><div><dt>Role</dt><dd data-f="role">VFX lead data wrangler</dd></div><div><dt>VFX by</dt><dd data-f="company">One of Us</dd></div><div data-f="camwrap"><dt>Shot on</dt><dd data-f="camera"></dd></div></dl>
+        <a class="link tl-card__link" data-f="link" href="https://www.metacritic.com/movie/practical-magic-2/credits/" target="_blank" rel="noopener">See the credit on Metacritic</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="scanning" aria-labelledby="scanning-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="scanning-h" data-edit="scanning.title">Sets scanned before they are struck</h2><p class="t-lead measure" data-edit="scanning.lead">Four years at Lidar Lounge, London. Lead capture from 2021.</p></div>
+      <figure class="scan"><img src="img/scenes/city.jpg" width="1600" height="1100" alt="A point-cloud scan of a city skyline at night, a laser line sweeping across the towers" loading="lazy" decoding="async" data-source="client" data-subject="point-cloud render"></figure>
+    </div>
+  </section>
+
+  <section class="section" id="skills" aria-labelledby="skills-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="skills-h" data-edit="skills.title">Techniques and kit</h2><p class="t-lead measure" data-edit="skills.lead">What she brings to a VFX unit, and the camera systems her data has tracked.</p></div>
+      <div class="grid kit"><div class="span-3 kit__col"><h3 data-edit="skills.0.title">On-set VFX data</h3><ul><li data-edit="skills.0.item.0">Camera and lens data, every setup</li><li data-edit="skills.0.item.1">Chrome ball, grey ball and colour chart</li><li data-edit="skills.0.item.2">HDRI capture</li><li data-edit="skills.0.item.3">Texture and reference photography</li><li data-edit="skills.0.item.4">Tracking markers and set measurements</li><li data-edit="skills.0.item.5">Daily logging and backups</li></ul></div><div class="span-3 kit__col"><h3 data-edit="skills.1.title">Capture</h3><ul><li data-edit="skills.1.item.0">Terrestrial LiDAR of sets and locations</li><li data-edit="skills.1.item.1">Cyberscanning</li><li data-edit="skills.1.item.2">Photogrammetry</li><li data-edit="skills.1.item.3">360° panoramas</li><li data-edit="skills.1.item.4">Prop and vehicle scans</li></ul></div><div class="span-3 kit__col"><h3 data-edit="skills.2.title">Camera systems on her credits</h3><ul><li data-edit="skills.2.item.0">ARRI ALEXA 65</li><li data-edit="skills.2.item.1">ARRI ALEXA LF and Mini LF</li><li data-edit="skills.2.item.2">Sony VENICE</li><li data-edit="skills.2.item.3">Panavision System 65</li><li data-edit="skills.2.item.4">IMAX and 65mm film</li><li data-edit="skills.2.item.5">Kodak 35mm film</li></ul></div><div class="span-3 kit__col"><h3 data-edit="skills.3.title">Tools and training</h3><ul><li data-edit="skills.3.item.0">Nuke compositing, DV Talent</li><li data-edit="skills.3.item.1">BA Digital Film Production</li><li data-edit="skills.3.item.2">Gaffer and camera assistant on set</li><li data-edit="skills.3.item.3">Main unit and second unit</li></ul></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="career" style="--hm: 2" aria-labelledby="career-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="career-h" data-edit="career.title">From spark to lead data wrangler</h2></div>
+      <div class="stats career-stats">
+        <div class="stat"><p class="t-stat">13</p><p class="t-small muted">feature films</p></div>
+        <div class="stat"><p class="t-stat">4</p><p class="t-small muted">series</p></div>
+        <div class="stat"><p class="t-stat">8 years</p><p class="t-small muted">in visual effects</p></div>
+        <div class="stat"><p class="t-stat">9</p><p class="t-small muted">productions as data wrangler</p></div>
+      </div>
+
+      <div class="grid grid--top fill">
+        <ul class="rows span-6">
+          <li><span class="rows__name"><span data-edit="career.0.name">BA Digital Film Production</span><small data-edit="career.0.line">Ravensbourne University London</small></span><span class="rows__value" data-edit="career.0.dates">2013 to 2016</span></li>
+          <li><span class="rows__name"><span data-edit="career.1.name">Camera and lighting on shorts</span><small data-edit="career.1.line">Gaffer, spark, second AC and cinematographer</small></span><span class="rows__value" data-edit="career.1.dates">2014 to 2016</span></li>
+          <li><span class="rows__name"><span data-edit="career.2.name">LiDAR and environment capture</span><small data-edit="career.2.line">Lidar Lounge, lead capture from late 2021</small></span><span class="rows__value" data-edit="career.2.dates">2018 to 2022</span></li>
+          <li><span class="rows__name"><span data-edit="career.3.name">VFX data wrangler</span><small data-edit="career.3.line">NBCUniversal, Netflix and Wētā FX</small></span><span class="rows__value" data-edit="career.3.dates">2022 to 2024</span></li>
+          <li><span class="rows__name"><span data-edit="career.4.name">VFX lead data wrangler</span><small data-edit="career.4.line">Practical Magic 2</small></span><span class="rows__value" data-edit="career.4.dates">2025</span></li>
+        </ul>
+        <div class="frame frame--photo frame--fill span-6 start-7"><img class="frame__img" src="img/scenes/road.jpg" width="1600" height="1000" alt="A point-cloud road running between two cliffs into the dark" loading="lazy" decoding="async" data-source="client" data-subject="point-cloud render"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section statement" id="story" data-moment="word-highlight" aria-label="Story">
+    <div class="wrap">
+      <p class="t-label">Story</p>
+      <p class="mo-wh__text" data-edit="story.text">From spark on student shorts to scanning The Batman to leading a VFX data team. Every step <strong>earned</strong> on set.</p>
+    </div>
+  </section>
+
+
+</main>
+
+<footer class="footer closing g2m" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta hire" id="availability">
+      <div class="grid grid--top">
+        <div class="span-5 stack-5">
+          <p class="hire__kicker"><span class="dot" aria-hidden="true"></span><span data-edit="hire.kicker">VFX data and LiDAR, London</span></p>
+          <h2 id="close-h" data-edit="hire.title">Hire Ledicia for your next shoot</h2>
+          <p class="t-lead" data-edit="hire.lead">Tell her the production, the dates and where you film.</p>
+          <ul class="hire__points">
+            <li data-edit="hire.point.0">VFX data wrangling, main and second unit</li>
+            <li data-edit="hire.point.1">LiDAR and environment capture days</li>
+            <li data-edit="hire.point.2">Lead data wrangler on studio features</li>
+          </ul>
+          <p class="hire__alt">Prefer LinkedIn? <a class="link" href="https://www.linkedin.com/in/ledicia-castro-ba2a8a76/" data-edit-href="link.linkedin" rel="noopener" target="_blank">Message her there</a></p>
+        </div>
+        <form class="form span-6 start-7" data-hire novalidate>
+          <div class="hire__row">
+            <div class="field"><label for="f-name">Name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
+              <p class="field__error" id="f-name-err" hidden>Write your name.</p></div>
+            <div class="field"><label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-err">
+              <p class="field__error" id="f-email-err" hidden>Write an email address with an @, like name@studio.com.</p></div>
+          </div>
+          <div class="field"><label for="f-request">What you need</label>
+            <select id="f-request" name="request">
+              <option>VFX data wrangling</option><option>Lead data wrangler</option><option>LiDAR / environment capture</option><option>Data wrangling and LiDAR</option><option>Something else</option>
+            </select></div>
+          <div class="hire__row">
+            <div class="field"><label for="f-prod">Production and company</label>
+              <input id="f-prod" name="production" type="text" autocomplete="organization" required aria-describedby="f-prod-err">
+              <p class="field__error" id="f-prod-err" hidden>Write the production or the company.</p></div>
+            <div class="field"><label for="f-dates">Dates and location</label>
+              <input id="f-dates" name="dates" type="text" autocomplete="off" required aria-describedby="f-dates-err">
+              <p class="field__error" id="f-dates-err" hidden>Write the dates and where you shoot.</p></div>
+          </div>
+          <div class="field"><label for="f-message">Details</label>
+            <textarea id="f-message" name="message" rows="3"></textarea></div>
+          <div class="btn-row"><button class="btn btn--primary" type="submit">Check availability</button></div>
+          <p class="form__status" role="status" data-form-status></p>
+        </form>
+      </div>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-4 stack-4">
+          <a class="nav__logo" href="#top"><span class="mark" data-mark="stack" aria-hidden="true"></span>Ledicia Castro</a>
+          <p class="footer__lede" data-edit="footer.lede">VFX data wrangler and LiDAR capture specialist, London.</p>
+        </div>
+        <div class="span-2 start-7 footer__col"><h3>Work</h3><ul><li><a href="#services">Services</a></li><li><a href="#credits">Credits</a></li><li><a href="#skills">Skills</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>About</h3><ul><li><a href="#scanning">Scanning</a></li><li><a href="#career">Career</a></li><li><a href="#story">Story</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Profiles</h3><ul><li><a href="https://www.imdb.com/name/nm6484884/" data-edit-href="link.imdb" rel="noopener">IMDb</a></li><li><a href="https://www.linkedin.com/in/ledicia-castro-ba2a8a76/" data-edit-href="link.linkedin" rel="noopener">LinkedIn</a></li></ul></div>
+              </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 Ledicia Castro</span>
+        <div class="socials"></div>
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+<nav class="actionbar" aria-label="Quick actions">
+  <a class="btn btn--primary" href="#availability">Check availability</a>
+</nav>
+
+<script type="module" src="js/content.js"></script>
+<script type="module" src="js/intro.js"></script>
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+</body>
+</html>
